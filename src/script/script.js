@@ -2,18 +2,18 @@ const content = document.querySelector('#content');
 
 document.querySelector('#abnButton').addEventListener('click', ()=>{
 	let info = {
-		nome: document.querySelector('#nome').value, 
-		sobrenome: document.querySelector('#sobrenome').value,
-		link: document.querySelector('#URL').value,
-		titulo: document.querySelector('#titulo').value,
-		site: document.querySelector('#nomesite').value,
-		ano: document.querySelector('#ano').value,
-		acesso: document.querySelector('#acesso').value
+		name: document.querySelector('#name').value, 
+		lastName: document.querySelector('#lastName').value,
+		link: document.querySelector('#url').value,
+		title: document.querySelector('#title').value,
+		site: document.querySelector('#siteName').value,
+		year: document.querySelector('#year').value,
+		access: document.querySelector('#access').value
 	};
 	content.innerHTML = `
 		<p>
-			${info.sobrenome.toUpperCase()}, ${info.nome}. ${info.titulo}. ${info.site}, ${info.ano}. Disponível em: &lt;${info.link}&gt;. Acesso em: ${info.acesso.substring(8,10)}/${info.acesso.substring(5,7)}/${info.acesso.substring(0,4)}.
-		</p>
+			${info.lastName.toUpperCase()}, ${info.name}. ${info.title}. ${info.site}, ${info.year}. Disponível em: &lt;${info.link}&gt;. Acesso em: ${info.access.substring(8,10)}/${info.access.substring(5,7)}/${info.access.substring(0,4)}.
+		cess
 
 	`
 });
