@@ -154,11 +154,17 @@ const YoutubeVideo = {
 }
 
 document.querySelector('#abnButton').addEventListener('click', ()=>{
-	if(options.value=='Homepage'){
-		content.innerHTML = HomePage.WriteInfo(HomePage.GetInfo());
-	}else if(options.value=='Youtube'){
-		content.innerHTML = YoutubeVideo.WriteInfo(YoutubeVideo.GetInfo());
-	}else{
-		content.innerHTML = WebMatter.WriteInfo(WebMatter.GetInfo());	
+	switch(options.value){
+		case 'Homepage':
+			content.innerHTML = HomePage.WriteInfo(HomePage.GetInfo());	
+		break;
+
+		case 'Youtube':
+			content.innerHTML = YoutubeVideo.WriteInfo(YoutubeVideo.GetInfo());
+		break;
+
+		case 'Materia':
+			content.innerHTML = WebMatter.WriteInfo(WebMatter.GetInfo());
+		break;
 	}
 });
