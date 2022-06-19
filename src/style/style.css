@@ -67,6 +67,17 @@ body{
     background-color: #0056a7;
 }
 
+#options{
+    cursor:pointer;
+    width: 12rem;
+    padding: 0.8rem 1.2rem;
+    margin: 0.6rem 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+
 .inputContainer{
     display: flex;
     justify-content: space-between;
@@ -126,9 +137,10 @@ body{
     background-color: #0a6cc7;
 }
 
-#content p{
+#content{
+    margin-top: 0.7rem;
     text-align: center;
-    font-size: 10px;
+    font-size: 0.7rem;
 }
 
 @media screen and (max-width: 1330px) {
@@ -160,6 +172,11 @@ body{
     }
 
     .btnContainer .btnConverter{
+        width: 15rem;
+        margin-bottom: 2rem;
+    }
+
+    #options{
         width: 15rem;
         margin-bottom: 2rem;
     }
