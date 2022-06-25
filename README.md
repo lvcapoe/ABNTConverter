@@ -35,7 +35,7 @@ Tivemos a ideia de criar essa aplicação quando, com muito cansaço, estávamos
 
 ## ToDo List
 
- - [ ] Opção "Livro"
+ - [x] Opção "Livro"
  - [ ] Opção "Artigo"
  - [ ] Caixa de texto para referência
  - [ ] Botão de copiar referência
