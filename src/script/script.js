@@ -10,6 +10,58 @@ const inputs = document.querySelectorAll('.inputContainer')[0];
 options.addEventListener('change', ()=>{
 	let option = options.value;
 	switch(option){
+		case 'Book':
+			inputs.innerHTML = `
+				<div class="box">
+                        <input id="name" type="text" placeholder="Nome">
+                    </div>
+                    <div class="box">
+                        <input id="lastName" type="text" placeholder="Sobrenome">
+                    </div>
+                    <div class="box">
+                        <input id="title" type="text" placeholder="Título do livro">
+                    </div>
+                    <div class="box">
+                        <input id="subtitle" type="text" placeholder="Subtítulo">
+                    </div>
+                    <div class="box">
+                        <input id="edition" type="text" placeholder="Edição">
+                    </div>
+                    <div class="box">
+                        <input id="local" type="text" placeholder="Local de publicação">
+                    </div>
+                    <div class="box">
+                        <input id="publisher" type="text" placeholder="Editora">
+                    </div>
+                    <div class="box">
+                        <input id="access" type="date" placeholder="Data de publicação">
+                </div>
+			`
+		break;
+
+		case 'Homepage':
+			inputs.innerHTML = `
+				<div class="box">
+                        <input id="url" type="text" placeholder="Link URL">
+                    </div>    
+                    <div class="box">
+                        <input id="name" type="text" placeholder="Autor ou Organização">
+                    </div>
+                    <div class="box">
+                        <input id="resume" type="text" placeholder="Emenda">
+                    </div>
+                    <div class="box">
+                        <input id="siteName" type="text" placeholder="Nome do site">
+                    </div>
+                    <div class="box">
+                        <input id="year" type="number" placeholder="Ano">
+                    </div>
+                    <div class="box">
+                        <input id="access" type="date" placeholder="Data de acesso">
+                </div>
+			`;
+		break;
+
 		case 'Materia':
 			inputs.innerHTML = `
 				<div class="box">
@@ -65,50 +117,26 @@ options.addEventListener('change', ()=>{
 
 			`;
 		break;
-
-		case 'Homepage':
-			inputs.innerHTML = `
-				<div class="box">
-                        <input id="url" type="text" placeholder="Link URL">
-                    </div>    
-                    <div class="box">
-                        <input id="name" type="text" placeholder="Autor ou Organização">
-                    </div>
-                    <div class="box">
-                        <input id="resume" type="text" placeholder="Emenda">
-                    </div>
-                    <div class="box">
-                        <input id="siteName" type="text" placeholder="Nome do site">
-                    </div>
-                    <div class="box">
-                        <input id="year" type="number" placeholder="Ano">
-                    </div>
-                    <div class="box">
-                        <input id="access" type="date" placeholder="Data de acesso">
-                </div>
-			`;
-		break;
 	}
 });
 
-const WebMatter = {
-	GetInfo: function (){
-		return {
+const Book = {
+	GetInfo: function(){
+		return{
 			name: document.querySelector('#name').value, 
 			lastName: document.querySelector('#lastName').value,
-			link: document.querySelector('#url').value,
 			title: document.querySelector('#title').value,
-			site: document.querySelector('#siteName').value,
-			year: document.querySelector('#year').value,
+			subTitle: document.querySelector('#subtitle').value,
+			edition: document.querySelector('#edition').value,
+			local: document.querySelector('#local').value,
+			publisher: document.querySelector('#publisher').value,
 			access: FormatDate(document.querySelector('#access').value)
 		}
 	},
-	WriteInfo: function (info){
-		return( 
-			`
-					${info.lastName.toUpperCase()}, ${info.name}. ${info.title}. ${info.site}, ${info.year}. Disponível em: &lt;${info.link}&gt;. Acesso em: ${info.access}.
-			`
-		);
+	WriteInfo: function(info){
+		return(
+			`${info.lastName.toUpperCase()}, ${info.name}. ${info.title}: ${info.subTitle}. ${info.edition}. ${info.local}: ${info.publisher}, ${info.access}.`
+		)
 	}
 }
 
@@ -127,6 +155,27 @@ const HomePage = {
 		return( 
 			`
 				${info.name}. ${info.site}, ${info.year}. ${info.resume}. Disponível em: &lt;${info.link}&gt;. Acesso em: ${info.access.substring(8,10)}/${info.access.substring(5,7)}/${info.access.substring(0,4)}.
+			`
+		);
+	}
+}
+
+const WebMatter = {
+	GetInfo: function (){
+		return {
+			name: document.querySelector('#name').value, 
+			lastName: document.querySelector('#lastName').value,
+			link: document.querySelector('#url').value,
+			title: document.querySelector('#title').value,
+			site: document.querySelector('#siteName').value,
+			year: document.querySelector('#year').value,
+			access: FormatDate(document.querySelector('#access').value)
+		}
+	},
+	WriteInfo: function (info){
+		return( 
+			`
+					${info.lastName.toUpperCase()}, ${info.name}. ${info.title}. ${info.site}, ${info.year}. Disponível em: &lt;${info.link}&gt;. Acesso em: ${info.access}.
 			`
 		);
 	}
@@ -155,15 +204,20 @@ const YoutubeVideo = {
 
 document.querySelector('#abnButton').addEventListener('click', ()=>{
 	switch(options.value){
+		case 'Book':
+			content.innerHTML = Book.WriteInfo(Book.GetInfo());
+		break;
 		case 'Homepage':
-			content.innerHTML = HomePage.WriteInfo(HomePage.GetInfo());	
+			content.innerHTML = HomePage.WriteInfo(HomePage.GetInfo());
 		break;
 
 		case 'Youtube':
+
 			content.innerHTML = YoutubeVideo.WriteInfo(YoutubeVideo.GetInfo());
 		break;
 
 		case 'Materia':
+
 			content.innerHTML = WebMatter.WriteInfo(WebMatter.GetInfo());
 		break;
 	}
