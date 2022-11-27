@@ -29,7 +29,7 @@ Tivemos a ideia de criar essa aplicação quando, com muito cansaço, estávamos
 
  * <a href='https://pt.wikipedia.org/wiki/HTML5'>HTML5</a>;
  * <a href='https://pt.wikipedia.org/wiki/CSS3'>CSS3</a>;
- * <a href='https://pt.wikipedia.org/wiki/JavaScript'>JavaScript</a>.
+ * <a href='https://pt.wikipedia.org/wiki/TypeScript'>Typescript</a>.
  
  <hr>
 
