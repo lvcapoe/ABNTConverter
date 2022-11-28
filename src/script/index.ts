@@ -2,6 +2,21 @@ var options = <HTMLSelectElement>document.querySelector('#options');
 var content = document.querySelector('#content');
 var inputs = document.querySelectorAll('.inputContainer');
 
+type Month = (
+	"Janeiro" |
+	"Fevereiro" |
+	"Março" |
+	"Abril" |
+	"Maio" |
+	"Junho" |
+	"Julho" |
+	"Agosto" |
+	"Setembro" |
+	"Outubro" |
+	"Novembro" |
+	"Dezembro"
+);
+
 class Dater {
 	static FormatDate(date: string){
 		return `${date.substring(8,10)}/${date.substring(5,7)}/${date.substring(0,4)}`;
@@ -25,6 +40,19 @@ class Reference {
 	static AccessDate: string;
 }
 
+class Article extends Reference{
+	static Name: string;
+	static LastName: string;
+	static Title: string;
+	static Magazine: string;
+	static Local: string;
+	static CopyVolume: number;
+	static CopyNumber: number;
+	static Pages: Array<number>;
+	static Month: Month;
+	static Year: number;
+}
+
 class Book extends Reference{ 
 	static Name: string;
 	static LastName: string;
@@ -46,7 +74,7 @@ class Book extends Reference{
 	}
 
 	static GetLink(){
-		return `${Book.LastName.toUpperCase()}, ${Book.Name}. ${Book.Title}: ${Book.SubTitle}. ${Book.Edition}. ${Book.Local}: ${Book.Publisher}, ${Book.AccessDate}.`
+		content.innerHTML = `${Book.LastName.toUpperCase()}, ${Book.Name}. ${Book.Title}: ${Book.SubTitle}. ${Book.Edition}. ${Book.Local}: ${Book.Publisher}, ${Book.AccessDate}.`
 	}
 
 	static WriteHTML(){
@@ -95,7 +123,7 @@ class Homepage extends Reference{
 	}
 
 	static GetLink(){
-		return(
+		content.innerHTML = (
 			`
 				${Homepage.Name}. ${Homepage.Site}, ${Homepage.Year}. ${Homepage.Resume}. Disponível em: &lt;${Homepage.Link}&gt;. Acesso em: ${Homepage.AccessDate}.
 			`
@@ -144,7 +172,7 @@ class Matter extends Reference{
 	}
 
 	static GetLink(){
-		return (
+		content.innerHTML = (
 			`
 			${Matter.LastName.toUpperCase()}, ${Matter.Name}. ${Matter.Title}. ${Matter.Site}, ${Matter.Year}. Disponível em: &lt;${Matter.Link}&gt;. Acesso em: ${Matter.AccessDate}.
 			`
@@ -195,7 +223,7 @@ class YoutubeVideo extends Reference{
 	}
 
 	static GetLink(){
-		return(
+		content.innerHTML = (
 			`
 					${YoutubeVideo.LastName.toUpperCase()}, ${YoutubeVideo.Name}. ${YoutubeVideo.Title}. ${YoutubeVideo.Site}, ${YoutubeVideo.Date}. Disponível em: &lt;${YoutubeVideo.Link}&gt;. Acesso em: ${YoutubeVideo.AccessDate}.
 			`
@@ -256,21 +284,21 @@ document.querySelector('#abnButton').addEventListener('click', ()=>{
 	switch(options.value){
 		case 'Book':
 			Book.GetInfo();
-			content.innerHTML = Book.GetLink();
+			Book.GetLink();
 		break;
 		case 'Homepage':
 			Homepage.GetInfo();
-			content.innerHTML = Homepage.GetLink();
+			Homepage.GetLink();
 		break;
 
 		case 'YoutubeVideo':
 			YoutubeVideo.GetInfo();
-			content.innerHTML = YoutubeVideo.GetLink();
+			YoutubeVideo.GetLink();
 		break;
 
 		case 'Matter':
 			Matter.GetInfo();
-			content.innerHTML = Matter.GetLink();
+			Matter.GetLink();
 		break;
 	}
 });
