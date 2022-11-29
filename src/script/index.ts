@@ -40,7 +40,7 @@ class Reference {
 	static AccessDate: string;
 }
 
-class Article extends Reference{
+class Article{
 	static Name: string;
 	static LastName: string;
 	static Title: string;
@@ -51,7 +51,13 @@ class Article extends Reference{
 	static Pages: Array<number>;
 	static Month: Month;
 	static Year: number;
+
+
+	static GetLink(){
+		content.innerHTML = `${Article.LastName}, ${Article.Name}. ${Article.Title}. <b>${Article.Magazine}</b>, ${Article.Local}, v. ${Article.CopyVolume}, n. ${Article.CopyNumber}, p. ${Article.Pages[0]} - ${Article.Pages[1]}, ${Article.Month.slice(0, 3)}. ${Article.Year}`;
+	}
 }
+
 
 class Book extends Reference{ 
 	static Name: string;
