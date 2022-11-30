@@ -2,20 +2,7 @@ var options = <HTMLSelectElement>document.querySelector('#options');
 var content = document.querySelector('#content');
 var inputs = document.querySelectorAll('.inputContainer');
 
-type Month = (
-	"Janeiro" |
-	"Fevereiro" |
-	"Março" |
-	"Abril" |
-	"Maio" |
-	"Junho" |
-	"Julho" |
-	"Agosto" |
-	"Setembro" |
-	"Outubro" |
-	"Novembro" |
-	"Dezembro"
-);
+type Month = ("Janeiro" | "Fevereiro" | "Março" | "Abril" | "Maio" | "Junho" | "Julho" | "Agosto" | "Setembro" | "Outubro" | "Novembro" | "Dezembro" );
 
 class Dater {
 	static FormatDate(date: string){
